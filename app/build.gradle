@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        /* TODO(developer): Configure to sign app with a release key for testing.
+        release {
+            storeFile file('path/to/release/signing/key')
+            keyAlias 'release_key_alias'
+            keyPassword "${password}"
+            storePassword "${password}"
+        }*/
+      /*  config {
+            keyAlias 'bdzchw'
+            keyPassword 'YiXinBDZC1907'
+            storeFile file('D:/code/android-play-billing-master/TrivialDrive/BDZCHW.keystore')
+            storePassword 'uluGame'
+        }*/
+    }
+    compileSdkVersion 23
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        //   applicationId "com.ulugame.goldenkr.google"
+        //谷歌支付aidl 官方demo修改以下参数即可支付相关应用内购，主要用于测试cp谷歌支付是否正常
+        applicationId "com.ulusdk.google"
+        buildConfigField "String","PRODUCT_ID","\"bb\""
+        buildConfigField "String","GOOGLE_PAY_KEY","\"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5gxYJh+OKDOHshIS8VXy/ikqMu8ooqSZhUpRBruo90IvgSLzRzgMB3k1qWh1/d/zMzWoX6kaDNLbUQgWupWNMdRNn4ANFqXfIjJhII3c/wCa/UYrZHbrGudnbGcTi1QHHOYxy7TuPNiFqmsmJ20k7hfj4IsKXPQ3DZrClO/cc67jxz6C+JF+huHouYxGhDtreJl438dvTKmzIBDz2/EIGs2GgfDMxYX7JhSf9nrNgl0XtRjhZuxWXLvZgx359Ql/VtJvBA70QIEgV7lxviNJm/ode4xaAJbO+fN25ebBZP/+IjtfrjfUtHdBtf3N8yHaGvVPobn5lwXr/bgEp4OczwIDAQAB\""
+
+        minSdkVersion 22
+        targetSdkVersion 27
+        versionCode 100
+        versionName "1.0"
+
+    }
+    buildTypes {
+        release {
+
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // TODO(developer): uncomment below once config above is complete and uncommented.
+            // signingConfig signingConfigs.release
+           // signingConfig signingConfigs.config
+        }
+        debug {
+
+            //  signingConfig signingConfigs.config
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:23.0.1'
+}
